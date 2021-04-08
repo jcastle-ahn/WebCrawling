@@ -2,8 +2,9 @@ import time
 import telepot
 import os
 
-genietoken= "1354983269:AAGwZkkvUZkQ567vqcvkvzbV3E2wUFabMW8"
-bot = telepot.Bot(genietoken)
+f = open('/home/ubuntu/crawling/token.txt', mode='rt', encoding='utf-8')
+token = f.read().splitlines()[0]
+bot = telepot.Bot(token)
 
 InfoMsg = "아래의 요청 중 하나를 고르고 번호를 입력하세요.\n" \
           "1. 주가 확인\n" \

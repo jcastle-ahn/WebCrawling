@@ -5,7 +5,7 @@ import telepot
 from bs4 import BeautifulSoup
 
 def sendTelegramMsg(msg) :
-	f = open('token.txt', mode='rt', encoding='utf-8')
+	f = open('/home/ubuntu/crawling/token.txt', mode='rt', encoding='utf-8')
 	token = f.read().splitlines()[0]
 	mc = "719701722"
 	bot = telepot.Bot(token)
