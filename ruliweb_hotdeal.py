@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 def SendTelegramMsg(msg) :
 	f = open('/home/ubuntu/crawling/token.txt', mode='rt', encoding='utf-8')
 	token = f.read().splitlines()[0]
-	mc = "-1001218462501" #"-1001357961262"	#channel
+	mc = "-1001357961262"	#channel
 	bot = telepot.Bot(token)
 
 	bot.sendMessage(mc, msg)
@@ -29,18 +29,18 @@ def Compare(title, news_link):
                 f_write.write(news_link+'\n')
                 f_write.close()
 
-def main(key):    
+def main(key):
     lv1_url = 'https://m.ruliweb.com/market/board/1020?search_type=subject&search_key='+key
     html = requests.get(lv1_url).text
     soup = BeautifulSoup(html, 'html.parser')
 
     board = soup.find('table', class_='board_list_table')
     #print(board)
-     
+
     for a_tag in board.select('a.subject_link.deco'):
         link = a_tag['href']
         title = a_tag.string
-        if title :
+        if title and "board/600004" not in link :
             print(title, link)
             Compare(title, link)
         #print(a_tag.text, link)
